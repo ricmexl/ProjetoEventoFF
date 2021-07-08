@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using ProjetoEventoFF.Application.Interface;
+using ProjetoEventoFF.Domain.Entities;
 using ProjetoEventoFF.MVC.AutoMapper;
-using System;
+using ProjetoEventoFF.MVC.ViewModels;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ProjetoEventoFF.MVC.Controllers
@@ -23,13 +22,16 @@ namespace ProjetoEventoFF.MVC.Controllers
         // GET: Equipes
         public ActionResult Index()
         {
-            return View();
+            var equipeViewModel = _mapper.Map<IEnumerable<Equipe>, IEnumerable<EquipeViewModel>>(_equipeAppServive.GetAll());
+            return View(equipeViewModel);
         }
 
         // GET: Equipes/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var equipe = _equipeAppServive.GetById(id);
+            var equipeViewModel = _mapper.Map<Equipe, EquipeViewModel>(equipe);
+            return View(equipeViewModel);
         }
 
         // GET: Equipes/Create
@@ -40,62 +42,59 @@ namespace ProjetoEventoFF.MVC.Controllers
 
         // POST: Equipes/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(EquipeViewModel equipe)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                var equipeDomain = _mapper.Map<EquipeViewModel, Equipe>(equipe);
+                _equipeAppServive.Add(equipeDomain);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            
+            return View(equipe);
         }
 
         // GET: Equipes/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var equipe = _equipeAppServive.GetById(id);
+            var equipeViewModel = _mapper.Map<Equipe, EquipeViewModel>(equipe);
+            return View(equipeViewModel);
         }
 
         // POST: Equipes/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(EquipeViewModel equipeViewModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                var equipeDomain = _mapper.Map<EquipeViewModel, Equipe>(equipeViewModel);
+                _equipeAppServive.Update(equipeDomain);
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            
+            return View(equipeViewModel);
         }
 
         // GET: Equipes/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var equipe = _equipeAppServive.GetById(id);
+            var equipeViewModel = _mapper.Map<Equipe, EquipeViewModel>(equipe);
+            return View(equipeViewModel);
         }
 
         // POST: Equipes/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var equipe = _equipeAppServive.GetById(id);            
+            _equipeAppServive.Remove(equipe);
+            return RedirectToAction("Index");
         }
     }
 }

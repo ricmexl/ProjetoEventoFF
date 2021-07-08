@@ -12,8 +12,8 @@ namespace ProjetoEventoFF.MVC.ViewModels
         public int EquipeId { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Nome")]
-        [MaxLength(50, ErrorMessage = "Máximo {0} caracteres")]
-        [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
+        [MaxLength(50, ErrorMessage = "Máximo 50 caracteres")]
+        [MinLength(2, ErrorMessage = "Mínimo 2 caracteres")]
         public string Nome { get; set; }
 
         [ScaffoldColumn(false)]

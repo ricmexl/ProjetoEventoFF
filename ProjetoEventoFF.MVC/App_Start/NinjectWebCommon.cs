@@ -72,14 +72,22 @@ namespace ProjetoEventoFF.MVC.App_Start
             kernel.Bind(typeof(IAppServiceBase<>)).To(typeof(AppServiceBase<>));
             kernel.Bind<IUsuarioAppService>().To<UsuarioAppService>();
             kernel.Bind<IEquipeAppService>().To<EquipeAppService>();
+            kernel.Bind<ICalendarioAppService>().To<CalendarioAppService>();
+            kernel.Bind<IEventoAppService>().To<EventoAppService>();
 
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
             kernel.Bind<IUsuarioService>().To<UsuarioService>();
             kernel.Bind<IEquipeService>().To<EquipeService>();
+            kernel.Bind<ICalendarioService>().To<CalendarioService>();
+            kernel.Bind<IEventoService>().To<EventoService>();
 
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             kernel.Bind<IUsuarioRepository>().To<UsuarioRepository>();
             kernel.Bind<IEquipeRepository>().To<EquipeRepository>();
+            kernel.Bind<ICalendarioRepository>().To<CalendarioRepository>();
+            kernel.Bind<IEventoRepository>().To<EventoRepository>();
+
+
 
         }
     }

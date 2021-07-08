@@ -142,6 +142,7 @@
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
+    <Compile Include="Controllers\CalendarioController.cs" />
     <Compile Include="Controllers\EquipesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -149,7 +150,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CalendarioViewModel.cs" />
     <Compile Include="ViewModels\EquipeViewModel.cs" />
+    <Compile Include="ViewModels\EventoViewModel.cs" />
     <Compile Include="ViewModels\UsuarioViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +201,11 @@
     <Content Include="Views\Equipes\Details.cshtml" />
     <Content Include="Views\Equipes\Edit.cshtml" />
     <Content Include="Views\Equipes\Delete.cshtml" />
+    <Content Include="Views\Calendario\Create.cshtml" />
+    <Content Include="Views\Calendario\Delete.cshtml" />
+    <Content Include="Views\Calendario\Details.cshtml" />
+    <Content Include="Views\Calendario\Index.cshtml" />
+    <Content Include="Views\Calendario\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

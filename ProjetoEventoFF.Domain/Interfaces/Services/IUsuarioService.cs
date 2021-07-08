@@ -7,5 +7,7 @@ namespace ProjetoEventoFF.Domain.Interfaces.Services
     public interface IUsuarioService : IRepositoryBase<Usuario>
     {
         IEnumerable<Usuario> ObterUsuariosAntigos(IEnumerable<Usuario> usuarios);
+        IEnumerable<Usuario> BuscarTodos();
+        Usuario BuscarPorId(int id);
     }
 }

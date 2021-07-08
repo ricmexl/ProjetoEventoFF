@@ -10,6 +10,8 @@ namespace ProjetoEventoFF.MVC.AutoMapper
         {
             CreateMap<Usuario, UsuarioViewModel>();
             CreateMap<Equipe, EquipeViewModel>();
+            CreateMap<Calendario, CalendarioViewModel>();
+            CreateMap<Evento, EventoViewModel>();
         }
         
     }

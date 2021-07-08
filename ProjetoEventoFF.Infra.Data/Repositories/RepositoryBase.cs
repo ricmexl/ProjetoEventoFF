@@ -1,4 +1,5 @@
-﻿using ProjetoEventoFF.Domain.Interfaces.Repositories;
+﻿using ProjetoEventoFF.Domain.Entities;
+using ProjetoEventoFF.Domain.Interfaces.Repositories;
 using ProjetoEventoFF.Infra.Data.Context;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,6 @@ namespace ProjetoEventoFF.Infra.Data.Repositories
     public class RepositoryBase<TEntity> : IDisposable, IRepositoryBase<TEntity> where TEntity : class
     {
         protected ProjetoEventoFFContext Db = new ProjetoEventoFFContext();
-
 
         public void Add(TEntity obj)
         {
@@ -23,14 +23,13 @@ namespace ProjetoEventoFF.Infra.Data.Repositories
         }
 
         public IEnumerable<TEntity> GetAll()
-        {
-            var r = Db.Set<TEntity>().ToList();
-            return r;
+        {            
+            return Db.Set<TEntity>().ToList();
         }
 
         public TEntity GetById(int id)
         {
-            var r =  Db.Set<TEntity>().Find(id);
+            var r = Db.Set<TEntity>().Find(id);
             return r;
         }
 

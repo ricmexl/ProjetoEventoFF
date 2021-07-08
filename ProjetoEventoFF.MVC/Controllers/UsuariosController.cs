@@ -24,14 +24,14 @@ namespace ProjetoEventoFF.MVC.Controllers
         // GET: Usuarios
         public ActionResult Index()        {
             
-            var usuarioViewModel = _mapper.Map<IEnumerable<Usuario>, IEnumerable<UsuarioViewModel>>(_usuarioAppService.GetAll());
+            var usuarioViewModel = _mapper.Map<IEnumerable<Usuario>, IEnumerable<UsuarioViewModel>>(_usuarioAppService.BuscarTodos());
             return View(usuarioViewModel);
         }
 
         // GET: Usuarios/Details/5
         public ActionResult Details(int id)
         {
-            var usuario = _usuarioAppService.GetById(id);
+            var usuario = _usuarioAppService.BuscarPorId(id);
             var usuarioViewModel = _mapper.Map<Usuario, UsuarioViewModel>(usuario);
             return View(usuarioViewModel);
         }
@@ -56,17 +56,17 @@ namespace ProjetoEventoFF.MVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EquipeId = new SelectList(_equipeAppServive.GetAll(), "EquipeId", "Nome");
+            ViewBag.EquipeId = new SelectList(_equipeAppServive.GetAll(), "EquipeId", "Nome", usuario.EquipeId);
             return View(usuario);
         }
 
         // GET: Usuarios/Edit/5
         public ActionResult Edit(int id)
         {
-            var usuario = _usuarioAppService.GetById(id);
+            var usuario = _usuarioAppService.BuscarPorId(id);
             var usuarioViewModel = _mapper.Map<Usuario, UsuarioViewModel>(usuario);
 
-            ViewBag.EquipeId = new SelectList(_equipeAppServive.GetAll(), "EquipeId", "Nome");
+            ViewBag.EquipeId = new SelectList(_equipeAppServive.GetAll(), "EquipeId", "Nome", usuario.EquipeId);
 
             return View(usuarioViewModel);
         }
@@ -84,14 +84,14 @@ namespace ProjetoEventoFF.MVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EquipeId = new SelectList(_equipeAppServive.GetAll(), "EquipeId", "Nome");
+            ViewBag.EquipeId = new SelectList(_equipeAppServive.GetAll(), "EquipeId", "Nome", usuario.EquipeId);
             return View(usuario);
         }
 
         // GET: Usuarios/Delete/5
         public ActionResult Delete(int id)
         {
-            var usuario = _usuarioAppService.GetById(id);
+            var usuario = _usuarioAppService.BuscarPorId(id);
             var usuarioViewModel = _mapper.Map<Usuario, UsuarioViewModel>(usuario);
 
             return View(usuarioViewModel);
@@ -102,7 +102,7 @@ namespace ProjetoEventoFF.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var usuario = _usuarioAppService.GetById(id);
+            var usuario = _usuarioAppService.BuscarPorId(id);
             _usuarioAppService.Remove(usuario);
 
             return RedirectToAction("Index");

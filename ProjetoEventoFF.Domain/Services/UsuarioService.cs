@@ -14,11 +14,21 @@ namespace ProjetoEventoFF.Domain.Services
             :base(usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;
-        }
+        }        
 
         public IEnumerable<Usuario> ObterUsuariosAntigos(IEnumerable<Usuario> usuarios)
         {
             return usuarios.Where(c => c.UsuariosAntigos(c));
+        }
+
+        public IEnumerable<Usuario> BuscarTodos()
+        {
+            return _usuarioRepository.BuscarTodos();
+        }
+
+        public Usuario BuscarPorId(int id)
+        {
+            return _usuarioRepository.BuscarPorId(id);
         }
     }
 }

@@ -19,6 +19,16 @@ namespace ProjetoEventoFF.Application
             _usuarioService = usuarioService;
         }
 
+        public Usuario BuscarPorId(int id)
+        {
+            return _usuarioService.BuscarPorId(id);
+        }
+
+        public IEnumerable<Usuario> BuscarTodos()
+        {
+            return _usuarioService.BuscarTodos();
+        }
+
         public IEnumerable<Usuario> ObterUsuariosAntigos()
         {            
             return _usuarioService.ObterUsuariosAntigos(_usuarioService.GetAll());
