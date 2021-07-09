@@ -4,16 +4,17 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Calendários</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo calendário", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Nome)
-        </th>        
+        </th>
+        
         <th>
             @Html.DisplayName("Equipe")
         </th>
@@ -29,9 +30,10 @@
             @Html.DisplayFor(modelItem => item.Equipe.Nome)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CalendarioId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CalendarioId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CalendarioId })
+            @Html.ActionLink("Editar", "Edit", new { id = item.CalendarioId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id = item.CalendarioId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id = item.CalendarioId }) |
+            @Html.ActionLink("Evento", "IndexCalendario", "Evento", new { id = item.CalendarioId }, null)
         </td>
     </tr>
 }

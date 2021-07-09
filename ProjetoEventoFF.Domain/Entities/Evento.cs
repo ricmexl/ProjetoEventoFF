@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ProjetoEventoFF.Domain.Entities
 {
@@ -15,6 +16,7 @@ namespace ProjetoEventoFF.Domain.Entities
         public DateTime DataCadastro { get; set; }
         public int CalendarioId { get; set; }
         public Calendario Calendario { get; set; }
+        public IEnumerable<EventoUsuario> EventoUsuarios { get; set; }
 
     }
 }

@@ -17,9 +17,9 @@ namespace ProjetoEventoFF.Infra.Data.Context
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Equipe> Equipes { get; set; }
-
         public DbSet<Evento> Eventos { get; set; }
         public DbSet<Calendario> Calendarios { get; set; }
+        public DbSet<EventoUsuario> EventoUsuarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -41,6 +41,7 @@ namespace ProjetoEventoFF.Infra.Data.Context
             modelBuilder.Configurations.Add(new EquipeConfiguration());
             modelBuilder.Configurations.Add(new EventoConfiguration());
             modelBuilder.Configurations.Add(new CalendarioConfiguration());
+            modelBuilder.Configurations.Add(new EventoUsuarioConfiguration());
         }
         
         //Encontrado um problema com a conexão de banco de dados.. correção encontrada no stackoverflow...

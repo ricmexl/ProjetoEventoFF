@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProjetoEventoFF.MVC.ViewModels
@@ -39,5 +40,6 @@ namespace ProjetoEventoFF.MVC.ViewModels
         public int CalendarioId { get; set; }
 
         public CalendarioViewModel Calendario { get; set; }
+        public IEnumerable<EventoUsuarioViewModel> EventoUsuarios { get; set; }
     }
 }

@@ -55,12 +55,14 @@
     <Compile Include="EntityConfig\CalendarioConfiguration.cs" />
     <Compile Include="EntityConfig\EquipeConfiguration.cs" />
     <Compile Include="EntityConfig\EventoConfiguration.cs" />
+    <Compile Include="EntityConfig\EventoUsuarioConfiguration.cs" />
     <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CalendarioRepository.cs" />
     <Compile Include="Repositories\EquipeRepository.cs" />
     <Compile Include="Repositories\EventoRepository.cs" />
+    <Compile Include="Repositories\EventoUsuarioRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UsuarioRepository.cs" />
   </ItemGroup>

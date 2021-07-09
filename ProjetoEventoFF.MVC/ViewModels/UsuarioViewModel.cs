@@ -42,6 +42,7 @@ namespace ProjetoEventoFF.MVC.ViewModels
         public int EquipeId { get; set; }
 
         public virtual EquipeViewModel Equipe { get; set; }
-        
+        public IEnumerable<EventoUsuarioViewModel> EventoUsuarios { get; set; }
+
     }
 }

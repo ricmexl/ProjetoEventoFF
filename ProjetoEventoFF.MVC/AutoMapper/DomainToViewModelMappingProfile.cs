@@ -12,6 +12,7 @@ namespace ProjetoEventoFF.MVC.AutoMapper
             CreateMap<EquipeViewModel, Equipe>();
             CreateMap<CalendarioViewModel, Calendario>();
             CreateMap<EventoViewModel, Evento>();
+            CreateMap<EventoUsuarioViewModel, EventoUsuario>();
         }
     }
 }

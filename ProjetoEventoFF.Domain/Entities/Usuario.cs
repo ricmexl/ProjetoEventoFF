@@ -14,7 +14,8 @@ namespace ProjetoEventoFF.Domain.Entities
         public DateTime DataCadastro { get; set; }
         public bool Ativo { get; set; }
         public int EquipeId { get; set; }
-        public Equipe Equipe { get; set; }        
+        public Equipe Equipe { get; set; }
+        public IEnumerable<EventoUsuario> EventoUsuarios { get; set; }
 
         /*
          Regra de negócio da entidade... só minha entidade saber dizer se um usuário é antigo.
