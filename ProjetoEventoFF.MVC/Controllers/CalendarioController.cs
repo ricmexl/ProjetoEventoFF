@@ -19,11 +19,11 @@ namespace ProjetoEventoFF.MVC.Controllers
             _calendarioAppServive = calendarioAppService;
             _equipeAppServive = equipeAppService;
             _mapper = AutoMapperConfig.RegisterMappings();
-        }
+        }        
 
         // GET: Calendario
         public ActionResult Index()
-        {
+        {            
             var calendarioViewModel = _mapper.Map<IEnumerable<Calendario>, IEnumerable<CalendarioViewModel>>(_calendarioAppServive.BuscarTodos());
             return View(calendarioViewModel);
         }

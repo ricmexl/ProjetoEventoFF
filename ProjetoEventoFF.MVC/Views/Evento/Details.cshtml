@@ -1,14 +1,12 @@
 ﻿@model ProjetoEventoFF.MVC.ViewModels.EventoViewModel
 
 @{
-    ViewBag.Title = "Excluir";
+    ViewBag.Title = "Eventos";
 }
 
-<h2>Evento</h2>
+<h2>Detalhes do evento</h2>
 
-<h3>Você deseja excluir esse evento?</h3>
-<div>
-    
+<div>    
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -36,7 +34,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayName("Data início")
+            @Html.DisplayName("Data de início")
         </dt>
 
         <dd>
@@ -44,7 +42,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayName("Data fim")
+            @Html.DisplayName("Data de fim")
         </dt>
 
         <dd>
@@ -76,13 +74,8 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Excluir" class="btn btn-default" /> |
-            @Html.ActionLink("Voltar", "Index")
-        </div>
-    }
 </div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.EventoId }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

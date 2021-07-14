@@ -1,75 +1,81 @@
 ﻿@model IEnumerable<ProjetoEventoFF.MVC.ViewModels.EventoViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Eventos";
 }
 
-<h2>Index</h2>
+<h2>Eventos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo evento", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+<p>
+    Filtro calendário
+    @Html.DropDownList("Calendario", string.Empty)
+    <input type="submit" value="Pesquisar" />
+</p>
+}
+
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Local)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataInicio)
+            @Html.DisplayName("Início")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataFim)
+            @Html.DisplayName("Fim")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DiaInteiro)
+            @Html.DisplayName("Dia inteiro")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CampoAberto)
+            @Html.DisplayName("Campo aberto")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CalendarioId)
+            @Html.DisplayName("Calendário")
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Local)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataInicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataFim)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaInteiro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CampoAberto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CalendarioId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EventoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EventoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EventoId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Local)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicio, new { @class = "form-control default-date-picker" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFim, "{0:dd/MM/yyyy}", new { @class = "form-control default-date-picker" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaInteiro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CampoAberto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calendario.Nome)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.EventoId }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.EventoId }) |
+                @Html.ActionLink("Excluir", "Delete", new { id = item.EventoId })
+            </td>
+        </tr>
+    }
 
 </table>

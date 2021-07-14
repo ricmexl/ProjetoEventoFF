@@ -25,9 +25,13 @@ namespace ProjetoEventoFF.MVC.ViewModels
         public string Local { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Data de Início")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
+        [DataType(DataType.DateTime, ErrorMessage = "Data em formato inválido")]
         public DateTime DataInicio { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Data de Fim")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
+        [DataType(DataType.DateTime, ErrorMessage = "Data em formato inválido")]
         public DateTime DataFim { get; set; }
        
         public bool DiaInteiro { get; set; }

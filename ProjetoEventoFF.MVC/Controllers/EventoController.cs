@@ -3,6 +3,7 @@ using ProjetoEventoFF.Application.Interface;
 using ProjetoEventoFF.Domain.Entities;
 using ProjetoEventoFF.MVC.AutoMapper;
 using ProjetoEventoFF.MVC.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -22,22 +23,36 @@ namespace ProjetoEventoFF.MVC.Controllers
         }
 
         // GET: Evento
-        public ActionResult Index()
+        public ActionResult Index(string Calendario)
         {
-            var eventoViewModel = _mapper.Map<IEnumerable<Evento>, IEnumerable<EventoViewModel>>(_eventoAppService.BuscarTodos());
+            IEnumerable<EventoViewModel> eventoViewModel;
+
+            if (string.IsNullOrEmpty(Calendario))
+            {
+                eventoViewModel = _mapper.Map<IEnumerable<Evento>, IEnumerable<EventoViewModel>>(_eventoAppService.BuscarTodos());
+            }
+            else
+            {
+                eventoViewModel = _mapper.Map<IEnumerable<Evento>, IEnumerable<EventoViewModel>>(_eventoAppService.BuscarEventosPorCalendario(Convert.ToInt32(Calendario)));
+            }
+
+            
+            ViewBag.Calendario = new SelectList(_calendarioAppServive.GetAll(), "CalendarioId", "Nome");
             return View(eventoViewModel);
         }
 
-        public ActionResult IndexCalendario(string calendarioId)
+        public ActionResult IndexCalendario(int calendarioId)
         {
-            var eventoViewModel = _mapper.Map<IEnumerable<Evento>, IEnumerable<EventoViewModel>>(_eventoAppService.BuscarEventosPorCalendario(1));
+            var eventoViewModel = _mapper.Map<IEnumerable<Evento>, IEnumerable<EventoViewModel>>(_eventoAppService.BuscarEventosPorCalendario(calendarioId));
+            ViewBag.nomeCalendario = _calendarioAppServive.BuscarPorId(calendarioId).Nome;
             return View(eventoViewModel);
         }
 
         // GET: Evento/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var eventoViewModel = _mapper.Map<Evento, EventoViewModel>(_eventoAppService.BuscarPorId(id));
+            return View(eventoViewModel);
         }
 
         // GET: Evento/Create
@@ -58,6 +73,8 @@ namespace ProjetoEventoFF.MVC.Controllers
                 _eventoAppService.Add(eventoDomain);
                 return RedirectToAction("Index");
             }
+
+            ViewBag.CalendarioId = new SelectList(_calendarioAppServive.GetAll(), "CalendarioId", "Nome", evento.CalendarioId);
 
             return View(evento);
         }

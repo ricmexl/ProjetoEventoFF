@@ -33,7 +33,7 @@
             @Html.ActionLink("Editar", "Edit", new { id = item.CalendarioId }) |
             @Html.ActionLink("Detalhes", "Details", new { id = item.CalendarioId }) |
             @Html.ActionLink("Excluir", "Delete", new { id = item.CalendarioId }) |
-            @Html.ActionLink("Evento", "IndexCalendario", "Evento", new { id = item.CalendarioId }, null)
+            @Html.ActionLink("Evento", "Index", "Evento", new { Calendario = item.CalendarioId }, null)
         </td>
     </tr>
 }
